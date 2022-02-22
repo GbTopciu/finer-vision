@@ -11,10 +11,10 @@ const MainForm = () => {
 
   return (
     <div className="flex justify-center items-center h-screen w-full">
-      <ul className="flex flex-col  justify-center items-center w-full">
+      <ul className="flex flex-col  justify-center items-center w-full  rounded">
         {/* Details */}
-
-        <div className="w-1/2 h-2/4 border-2 border-white">
+        <div className="md:w-1/2">
+        <div className="border-2 border-white rounded shadow-2xl margin:auto">
           <li
             className="bg-[#f4b50a] rounded text-white py-4 px-3"
             onClick={() => setShow(!show)}
@@ -25,7 +25,7 @@ const MainForm = () => {
         </div>
         {/* More Comments */}
 
-        <div className="w-1/2 h-2/4 border-2 border-white">
+        <div className="border-2 border-white rounded shadow-2xl">
           <li
             className="bg-[#f4b50a] rounded text-white py-4 px-3"
             onClick={() => setMoreComments(!moreComments)}
@@ -36,7 +36,7 @@ const MainForm = () => {
         </div>
 
         {/* Final Comments */}
-        <div className="w-1/2 h-2/4 border-2 border-white">
+        <div className="border-2 border-white rounded shadow-2xl">
           <li
             className="bg-[#f4b50a] rounded text-white py-4 px-3"
             onClick={() => setFinalComments(!finalComments)}
@@ -45,7 +45,9 @@ const MainForm = () => {
           </li>
           {finalComments && <FinalComments />}
         </div>
+        </div>
       </ul>
+      
     </div>
   );
 };

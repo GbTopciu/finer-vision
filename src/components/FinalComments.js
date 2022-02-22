@@ -11,7 +11,7 @@ const FinalComments = () => {
           <textarea
             type="email"
             name="name"
-            className="drop-shadow-xl rounded-md py-5 w-2/6"
+            className="drop-shadow-xl rounded-md py-5 w-96 text-sm"
           />
         </div>
         <div className="flex justify-end">
