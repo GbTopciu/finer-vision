@@ -1,14 +1,27 @@
-import { React, useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 // Importing Components
 import Details from "./components/Details";
 import FinalComments from "./components/FinalComments";
 import MoreComments from "./components/MoreComments";
 
+
 const MainForm = () => {
   const [show, setShow] = useState(false);
   const [finalComments, setFinalComments] = useState(false);
   const [moreComments, setMoreComments] = useState(false);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8888/", {})
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div className="flex justify-center items-center h-screen w-full">

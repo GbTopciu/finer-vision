@@ -1,8 +1,11 @@
-import { React, useRef } from "react";
+import { React, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
-
-const Details = ({ show, setShow }) => {
+const Details = () => {
+  const [firstname, setFirstName] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("");
 
   // React-Hook-Form
   const form = useRef();
@@ -29,6 +32,22 @@ const Details = ({ show, setShow }) => {
     },
   };
 
+  const pushHandler = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:8888/", {
+        firstname:  firstname ,
+        lastname:  lastname ,
+        email:  email ,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <form
       className="rounded border-2 bg-[#dedede]"
@@ -44,6 +63,7 @@ const Details = ({ show, setShow }) => {
             name="name"
             className="rounded drop-shadow-xl py-1 pl-2"
             {...register("name", registerOptions.name)}
+            onChange={(e) => setFirstName(e.target.value)}
           />
           <small className="text-red-500 block">
             {errors?.name && errors.name.message}
@@ -56,6 +76,7 @@ const Details = ({ show, setShow }) => {
             name="surname"
             className="rounded drop-shadow-xl py-1 pl-2"
             {...register("surname", registerOptions.surname)}
+            onChange={(e) => setLastname(e.target.value)}
           />
           <small className="text-red-500 block">
             {errors?.surname && errors.surname.message}
@@ -72,15 +93,17 @@ const Details = ({ show, setShow }) => {
             name="email"
             className="rounded drop-shadow-xl py-1 pl-2"
             {...register("email", registerOptions.email)}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <small className="text-red-500 block">
-          {errors?.email && errors.email.message}
+            {errors?.email && errors.email.message}
           </small>
         </div>
         <div className="flex justify-end">
           <button
             type="submit"
             className="rounded bg-[#6059af] hover:bg-[#877fe0] text-white pr-5 pl-5 drop-shadow-xl py-1 mb-2"
+            onClick={pushHandler}
           >
             Next &gt;
           </button>
