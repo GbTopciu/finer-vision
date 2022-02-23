@@ -4,10 +4,12 @@ import FinalComments from "./components/FinalComments";
 import MoreComments from "./components/MoreComments";
 import { useState } from "react";
 
+
 const MainForm = () => {
   const [show, setShow] = useState(false);
   const [finalComments, setFinalComments] = useState(false);
   const [moreComments, setMoreComments] = useState(false);
+
 
   return (
     <div className="flex justify-center items-center h-screen w-full">
@@ -21,7 +23,7 @@ const MainForm = () => {
           >
             Step 1: Your details
           </li>
-          {show && <Details />}
+          {show && <Details show={show} setShow={setShow} />}
         </div>
         {/* More Comments */}
 

@@ -1,21 +1,59 @@
 import React from "react";
+import { useForm } from "react-hook-form";
+import { useRef } from "react";
 
 const MoreComments = () => {
+  // React-Hook-Form
+  const form = useRef();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
+  const registerOptions = {
+    phone: { required: "Please enter phone number" ,
+    minLength: {
+      value: 10,
+      message: "Should be between 10-11 digits"
+    },
+    maxLength: {
+      value: 11,
+      message: "Should be between 10-11 digits"
+    },
+    }
+  };
+
   return (
-    <form className="rounded border-2 bg-[#dedede] ">
+    <form className="rounded border-2 bg-[#dedede] "
+    onSubmit={handleSubmit(onSubmit)}
+    ref={form}
+    >
       {/* Telephone Number & Gender */}
       <div className="flex justify-start px-5">
         <div className="mr-5">
           <label className="block font-semibold">Telephone Number</label>
           <input
-            type="tel"
+            type="number"
             name="phone"
             className="rounded drop-shadow-xl py-1"
+            {...register("phone", registerOptions.phone)}
           />
+          <small className="text-red-500 block">
+            {errors?.phone && errors.phone.message}
+          </small>
         </div>
         <div>
           <label className="block font-semibold">Gender</label>
-          <select className="rounded drop-shadow-xl py-1 bg-gray-100" name="gender">
+          <select
+            className="rounded drop-shadow-xl py-1 bg-gray-100"
+            name="gender"
+          >
             <option value="" disabled selected>
               Select your option
             </option>
@@ -34,12 +72,12 @@ const MoreComments = () => {
             name="name"
             className="rounded drop-shadow-xl py-1 w-10 mr-2"
           />
-            <input
+          <input
             type="number"
             name="name"
             className="rounded drop-shadow-xl py-1 w-10 mr-2"
           />
-            <input
+          <input
             type="number"
             name="name"
             className="rounded drop-shadow-xl py-1 w-10 mr-2"

@@ -1,9 +1,31 @@
 import React from "react";
+import { useForm } from "react-hook-form";
+import { useRef } from "react";
 
 const FinalComments = () => {
+  // React-Hook-Form
+  const form = useRef();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
+  const registerOptions = {
+    area: { required: "Message is required" },
+  };
+
   return (
-    <form className="rounded border-2 bg-[#dedede]">
-      
+    <form
+      className="rounded border-2 bg-[#dedede]"
+      onSubmit={handleSubmit(onSubmit)}
+      ref={form}
+    >
       {/* Comments */}
       <div className="mt-2 px-5">
         <div>
@@ -12,7 +34,11 @@ const FinalComments = () => {
             type="email"
             name="name"
             className="drop-shadow-xl rounded-md py-5 w-96 text-sm"
+            {...register("area", registerOptions.area)}
           />
+          <small className="text-red-500 block">
+            {errors?.area && errors.area.message}
+          </small>
         </div>
         <div className="flex justify-end">
           <button
