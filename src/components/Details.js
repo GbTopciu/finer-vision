@@ -42,7 +42,7 @@ const Details = ({ show, setShow }) => {
           <input
             type="text"
             name="name"
-            className="rounded drop-shadow-xl py-1"
+            className="rounded drop-shadow-xl py-1 pl-2"
             {...register("name", registerOptions.name)}
           />
           <small className="text-red-500 block">
@@ -54,7 +54,7 @@ const Details = ({ show, setShow }) => {
           <input
             type="text"
             name="surname"
-            className="rounded drop-shadow-xl py-1"
+            className="rounded drop-shadow-xl py-1 pl-2"
             {...register("surname", registerOptions.surname)}
           />
           <small className="text-red-500 block">
@@ -70,7 +70,7 @@ const Details = ({ show, setShow }) => {
           <input
             type="email"
             name="email"
-            className="rounded drop-shadow-xl py-1"
+            className="rounded drop-shadow-xl py-1 pl-2"
             {...register("email", registerOptions.email)}
           />
           <small className="text-red-500 block">

@@ -33,7 +33,7 @@ const FinalComments = () => {
           <textarea
             type="email"
             name="name"
-            className="drop-shadow-xl rounded-md py-5 w-96 text-sm"
+            className="drop-shadow-xl rounded-md py-5 w-96 text-sm pl-2"
             {...register("area", registerOptions.area)}
           />
           <small className="text-red-500 block">
